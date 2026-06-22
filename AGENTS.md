@@ -5,7 +5,6 @@ This repository is intentionally simple and release-friendly.
 ## Project Structure
 
 - `index.html` is the entire web app, including markup, styles, client-side JavaScript, PNG rendering, and page-size-aware layout logic.
-- `generate-maze-pdf.mjs` is an optional Node.js script for generating printable PDF mazes from the command line.
 
 ## Development Guidelines
 

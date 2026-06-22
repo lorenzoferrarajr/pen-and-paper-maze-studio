@@ -50,18 +50,3 @@ The app provides three difficulty presets:
 
 When a seed is provided, the selected difficulty remains deterministic as well.
 
-## Generate a printable PDF
-
-If you also want a PDF from the command line, run:
-
-```bash
-node generate-maze-pdf.mjs maze.pdf --columns 20 --rows 20 --seed demo
-```
-
-Optional flags:
-
-- `--cell-size 20`
-- `--stroke-width 2`
-- `--page-size a4` or `--page-size letter`
-- `--margin 36`
-- `--show-solution`
