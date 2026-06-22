@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pen-and-paper maze studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style id="printStyle"></style>
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div>
+          <h1>pen-and-paper maze studio</h1>
+          <p class="intro">
+            Generate printable mazes as PNG images. Switch to a paper size and
+            the maze grid will expand to fit the page automatically.
+          </p>
+        </div>
+
+        <form id="controls" class="controls">
+          <div class="control-grid">
+            <label>
+              Target
+              <select name="pageSize">
+                <optgroup label="Screen">
+                  <option value="screen">Custom screen</option>
+                  <option value="ipad-97">iPad 9.7 / 10.2</option>
+                  <option value="ipad-mini">iPad mini 8.3</option>
+                  <option value="ipad-109">iPad 10.9 / Air 10.9</option>
+                  <option value="ipad-pro-11">iPad Pro 11</option>
+                  <option value="ipad-pro-129">iPad Pro 12.9</option>
+                </optgroup>
+                <optgroup label="Print">
+                  <option value="a5">A5</option>
+                  <option value="a4">A4</option>
+                  <option value="letter">Letter</option>
+                </optgroup>
+              </select>
+            </label>
+            <label>
+              Difficulty
+              <select name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+          </div>
+          <label class="control-toggle">
+            <input type="checkbox" name="includeCollectibles" />
+            Add collectibles
+          </label>
+
+          <div class="control-grid manual-only">
+            <label>
+              Columns
+              <input type="number" name="columns" min="5" max="80" value="20" />
+            </label>
+            <label>
+              Rows
+              <input type="number" name="rows" min="5" max="80" value="20" />
+            </label>
+          </div>
+
+          <div class="control-grid screen-only">
+            <label>
+              Cell size (px)
+              <input type="number" name="cellSizePx" min="8" max="80" value="20" />
+            </label>
+            <label>
+              Stroke (px)
+              <input type="number" name="strokeWidthPx" min="1" max="8" value="2" />
+            </label>
+          </div>
+
+          <div class="control-grid page-only is-hidden">
+            <label>
+              Cell size (mm)
+              <input type="number" name="cellSizeMm" min="3" max="20" step="0.5" value="7" />
+            </label>
+            <label>
+              Stroke (mm)
+              <input type="number" name="strokeWidthMm" min="0.2" max="2" step="0.1" value="0.5" />
+            </label>
+          </div>
+
+          <label>
+            Seed
+            <input type="text" name="seed" placeholder="Random" />
+          </label>
+
+          <label class="control-toggle">
+            <input type="checkbox" name="hideFooter" />
+            Hide footer label
+          </label>
+
+          <p class="hint" id="layoutHint">
+            Manual mode uses the row and column values directly.
+          </p>
+
+          <div class="actions">
+            <div class="action-row">
+              <button type="submit" class="button-primary">Generate maze</button>
+              <button type="button" id="toggleSolution" class="button-secondary">Show solution</button>
+            </div>
+            <div class="action-row action-row--secondary">
+              <button type="button" id="downloadPng" class="button-ghost">Download PNG</button>
+              <button type="button" id="printMaze" class="button-ghost">Print puzzle</button>
+            </div>
+          </div>
+        </form>
+
+        <dl id="mazeMeta" class="meta"></dl>
+      </section>
+
+      <section class="board">
+        <div class="board-frame">
+          <div id="mazeContainer" class="maze-container" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
